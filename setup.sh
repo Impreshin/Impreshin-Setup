@@ -20,14 +20,14 @@ function runscript {
 	echo "-----------------------------------------------"
 	echo "Setup"
 	echo ""
-	ARRAY=( 'Wizard' 'Partitioning' 'Networking' 'Folders & Files' 'Impreshin Setup' 'Update Impreshin' )
+	ARRAY=( 'w ) Wizard' '1) Partitioning' '2) Networking' '3) Folders & Files' '4) Impreshin Setup' '5) Update Impreshin' )
 	ARRAYDESC=( 'This will erase everything to default settings' '' '' '' 'Setup new Company etc')
 	ELEMENTS=${#ARRAY[@]}
 
 	# echo each element in array
 	# for loop
 	for (( i=0;i<$ELEMENTS;i++)); do
-	    echo " $i) ${ARRAY[${i}]}"
+	    echo " ${ARRAY[${i}]}"
 	   if [ -n "${ARRAYDESC[${i}]}" ]; then
 	        echo "     - ${ARRAYDESC[${i}]}"
 	   fi
