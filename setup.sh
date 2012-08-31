@@ -32,7 +32,10 @@ function runscript {
 	echo ""
 	read -p "Choose Script: " -i "$SCRIPT" SCRIPT
 
-	if [ -z "$SCRIPT" ]; then
+	if [ "$SCRIPT"="" ]; then
+		exit 0
+	fi
+	if [ "$SCRIPT"=" " ]; then
 		exit 0
 	fi
 
