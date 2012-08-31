@@ -30,9 +30,9 @@ function runscript {
 	done
 
 	echo ""
-	read -e -p "Choose Script: " -i "" SCRIPT
+	read -e -p "Choose Script: " -i "" RUNIT
 
-	if [ -z "$SCRIPT" ]; then
+	if [ -z "$RUNIT" ]; then
 		exit 0
 	fi
 
@@ -44,7 +44,7 @@ function runscript {
 
 	SELECTED=""
 
-	case $SCRIPT in
+	case $RUNIT in
         w)
             SELECTED="1"
 	        read -e -p "this will launch the first time wizard. Continue?: " -i "y" goon
@@ -79,7 +79,7 @@ function runscript {
     esac
 
 	if [ -z "$SELECTED" ]; then
-		runscript "Sorry, $SCRIPT is not a valid answer"
+		runscript "Sorry, $RUNIT is not a valid answer"
 
 	fi
 
@@ -88,5 +88,5 @@ function runscript {
 
 
 
-runscript
+runscript $1
 
