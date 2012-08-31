@@ -20,7 +20,7 @@ function runscript {
 	echo "-----------------------------------------------"
 	echo "Setup $1"
 	echo ""
-	ARRAY=( 'w) Wizard - This will erase everything to default settings' '' '1) Partitioning' '2) Networking' '3) Folders & Files' '4) Impreshin Setup' '5) Update Impreshin' '' '------------------------' 'r) Reboot' 's) Shut Down' )
+	ARRAY=( 'w) Wizard - This will erase everything to default settings' '' '1) Partitioning' '2) Networking' '3) Folders & Files' '4) Impreshin Setup' '5) Update Impreshin' '' '------------------------' 'e) Exit' 'r) Reboot' 's) Shut Down'  )
 	ELEMENTS=${#ARRAY[@]}
 
 	# echo each element in array
