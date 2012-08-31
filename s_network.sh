@@ -262,7 +262,7 @@ echo ""
 	if [ -n "$WIZARD" ]; then
 		bash ./s_folder.sh "$WIZARD"
     else
-      bash ./setup.sh
+      bash ./setup.sh " - Netowrking Done"
     fi
 }
 clear

@@ -41,9 +41,9 @@ echo ""
 echo ""
  read -p "Press [Enter] key to continue..."
 	if [ -z "$WIZARD" ]; then
-       bash ./setup.sh
+       bash ./setup.sh " - Impreshin Update Done"
     else
-       bash ./setup.sh
+       bash ./setup.sh " - Wizard Complete"
     fi
 }
 
