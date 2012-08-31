@@ -20,7 +20,7 @@ function runscript {
 	echo "-----------------------------------------------"
 	echo "Setup"
 	echo ""
-	ARRAY=( 'w ) Wizard' '1) Partitioning' '2) Networking' '3) Folders & Files' '4) Impreshin Setup' '5) Update Impreshin' )
+	ARRAY=( 'w) Wizard' '1) Partitioning' '2) Networking' '3) Folders & Files' '4) Impreshin Setup' '5) Update Impreshin' )
 	ARRAYDESC=( 'This will erase everything to default settings' '' '' '' 'Setup new Company etc')
 	ELEMENTS=${#ARRAY[@]}
 
@@ -44,32 +44,47 @@ function runscript {
 
 
 
-	if [ -z "${ARRAY[SCRIPT]}" ]; then
-		echo "Sorry, $SCRIPT is not a valid answer"
-		runscript
-	else
-		echo "Running ${ARRAY[SCRIPT]}"
-	sleep 1
 
+
+	SELECTED=""
 
 	case $SCRIPT in
-        0)
+        w)
+            $SELECTED="1"
 	        read -e -p "this will launch the first time wizard. Continue?: " -i "y" goon
 
 	        if [ $goon = "y" ]; then
             		 bash ./s_drive.sh "1"
             	else
             		runscript
-            	fi
+            fi
 
-        ;;
-        1) bash ./s_drive.sh ;;
-        2) bash ./s_network.sh ;;
-        3) bash ./s_folder.sh ;;
-        4) bash ./s_database.sh ;;
-        5) bash ./s_update.sh ;;
+          ;;
+        1)
+	        $SELECTED="1"
+            bash ./s_drive.sh
+         ;;
+        2)
+	        $SELECTED="1"
+	        bash ./s_network.sh
+         ;;
+        3)
+	        $SELECTED="1"
+	        bash ./s_folder.sh
+         ;;
+        4)
+	        $SELECTED="1"
+	        bash ./s_database.sh
+         ;;
+        5)
+            $SELECTED="1"
+            bash ./s_update.sh
+         ;;
     esac
 
+	if [ -z "$SELECTED" ]; then
+		echo "Sorry, $SCRIPT is not a valid answer"
+		runscript
 
 	fi
 
