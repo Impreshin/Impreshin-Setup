@@ -30,7 +30,7 @@ function runscript {
 	done
 
 	echo ""
-	read -p "Choose Script: " -i "" SCRIPT
+	read -e -p "Choose Script: " -i "" SCRIPT
 
 	if [ "$SCRIPT"="" ]; then
 		exit 0
