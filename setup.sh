@@ -18,7 +18,7 @@ function runscript {
 	echo "   http://$CURRENT_IP/"
 	echo ""
 	echo "-----------------------------------------------"
-	echo "Setup"
+	echo "Setup $1"
 	echo ""
 	ARRAY=( 'w) Wizard' '1) Partitioning' '2) Networking' '3) Folders & Files' '4) Impreshin Setup' '5) Update Impreshin' )
 	ARRAYDESC=( 'This will erase everything to default settings' '' '' '' 'Setup new Company etc')
@@ -83,8 +83,7 @@ function runscript {
     esac
 
 	if [ -z "$SELECTED" ]; then
-		echo "Sorry, $SCRIPT is not a valid answer"
-		runscript
+		runscript "Sorry, $SCRIPT is not a valid answer"
 
 	fi
 
