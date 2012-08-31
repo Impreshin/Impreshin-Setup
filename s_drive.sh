@@ -97,7 +97,7 @@ echo ""
 	if [ -n "$WIZARD" ]; then
         bash ./s_network.sh "$WIZARD"
     else
-        bash ./setup.sh
+        bash ./setup.sh " - Drive & Partitions Done"
 
     fi
 }

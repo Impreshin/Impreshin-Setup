@@ -64,7 +64,7 @@ echo ""
 	if [ -n "$WIZARD" ]; then
         bash ./s_database.sh "$WIZARD"
     else
-        bash ./setup.sh
+        bash ./setup.sh " - Folders & Files Done"
     fi
 }
 

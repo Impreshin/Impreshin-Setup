@@ -134,8 +134,9 @@ echo ""
 	if [ -n "$WIZARD" ]; then
        bash ./s_update.sh
     else
-       bash ./setup.sh
+       bash ./setup.sh "Impreshin DB Done"
     fi
+
 }
 
 clear
