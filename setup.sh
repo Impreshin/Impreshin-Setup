@@ -79,7 +79,7 @@ function runscript {
     esac
 
 	if [ -z "$SELECTED" ]; then
-		runscript "Sorry, $RUNIT is not a valid answer"
+		runscript " - Sorry, $RUNIT is not a valid answer"
 
 	fi
 
