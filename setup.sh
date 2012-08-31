@@ -76,6 +76,14 @@ function runscript {
             SELECTED="1"
             bash ./s_update.sh
          ;;
+         r)
+            SELECTED="1"
+            sudo reboot
+         ;;
+         s)
+            SELECTED="1"
+            sudo shutdown -h now
+         ;;
     esac
 
 	if [ -z "$SELECTED" ]; then
