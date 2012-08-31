@@ -3,7 +3,7 @@
 WIZARD=$1
 cd ~/setup/
 function startfn {
-php_output=`php /media/data/web/setup/cfg.php`
+php_output=`php ~/setup/cfg.php`
 	IFS=":"
 	while read -r key val; do
 	    eval ${key}="${val}"
