@@ -50,7 +50,7 @@ function runscript {
 
 	case $SCRIPT in
         w)
-            $SELECTED="1"
+            SELECTED="1"
 	        read -e -p "this will launch the first time wizard. Continue?: " -i "y" goon
 
 	        if [ $goon = "y" ]; then
@@ -61,23 +61,23 @@ function runscript {
 
           ;;
         1)
-	        $SELECTED="1"
+	        SELECTED="1"
             bash ./s_drive.sh
          ;;
         2)
-	        $SELECTED="1"
+	        SELECTED="1"
 	        bash ./s_network.sh
          ;;
         3)
-	        $SELECTED="1"
+	        SELECTED="1"
 	        bash ./s_folder.sh
          ;;
         4)
-	        $SELECTED="1"
+	        SELECTED="1"
 	        bash ./s_database.sh
          ;;
         5)
-            $SELECTED="1"
+            SELECTED="1"
             bash ./s_update.sh
          ;;
     esac
