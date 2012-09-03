@@ -1,6 +1,11 @@
 #!/bin/bash
 
 WIZARD=$1
+trap bashtrap INT
+bashtrap()
+{
+    bash ./setup.sh
+}
 cd ~/setup/
 
 OLDINTERFACES=/etc/network/interfaces

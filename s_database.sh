@@ -1,11 +1,24 @@
 #!/bin/bash
 cd ~/setup/
 WIZARD=$1
+trap bashtrap INT
+bashtrap()
+{
+    bash ./setup.sh
+}
+
+host1=github.com
+    if [ ping -w5 -c3 $host1 > /dev/null 2>&1 ]; then
+        INTERNETUP=1
+    else
+        INTERNETUP=0
+    fi
+
 function startfn {
 
 
 
-	php_output=`php /media/data/web/setup/db_cfg.php`
+	php_output=`php ~/setup/cfg.php`
 	IFS=":"
 	while read -r key val; do
 	    eval ${key}="${val}"
@@ -131,11 +144,16 @@ function endfn {
 echo ""
 echo ""
  read -p "Press [Enter] key to continue..."
+
+ if [ "$INTERNETUP"="0" ]; then
+    bash ./setup.sh
+ else
 	if [ -n "$WIZARD" ]; then
-       bash ./s_update.sh
-    else
-       bash ./setup.sh "Impreshin DB Done"
-    fi
+            bash ./s_update.sh
+        else
+            bash ./setup.sh "Impreshin DB Done"
+        fi
+	fi
 
 }
 
