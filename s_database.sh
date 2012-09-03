@@ -9,9 +9,9 @@ bashtrap()
 
 host1=github.com
     if  [ "`ping -c 1 $host1`" ]; then
-        INTERNETUP=1
+        INTERNETUP="1"
     else
-        INTERNETUP=0
+        INTERNETUP="0"
     fi
 
 function startfn {
