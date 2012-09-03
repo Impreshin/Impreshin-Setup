@@ -241,7 +241,7 @@ function proxyfn {
 		read -e -p "Proxy: " -i "$CURRENT_PROXY" CHANGE_PROXY
 
 		if [ "$CHANGE_PROXY" != "$CURRENT_PROXY" ]; then
-			export $CHANGE_PROXY
+			export http_proxy=$CHANGE_PROXY
 		fi
 	fi
 	finish
