@@ -43,6 +43,8 @@ function runscript {
 	echo '------------------------'
 	echo 'r) Reboot'
 	echo 's) Shut Down'
+	echo ''
+	echo 'e) Exit'
 
 
 
@@ -100,6 +102,12 @@ function runscript {
          s)
             SELECTED="1"
             sudo shutdown -h now
+         ;;
+         e)
+            SELECTED="1"
+            echo "Exiting"
+            sleep 1
+            exit 0
          ;;
     esac
 
