@@ -107,7 +107,7 @@ function runscript {
             SELECTED="1"
             echo "Exiting"
             sleep 1
-            exit 0
+            exit
          ;;
     esac
 
