@@ -1,6 +1,11 @@
 #!/bin/bash
 
 WIZARD=$1
+trap bashtrap INT
+bashtrap()
+{
+    bash ./setup.sh
+}
 cd ~/setup/
 function startfn {
 php_output=`php ~/setup/cfg.php`

@@ -8,6 +8,13 @@ function runscript {
 	CURRENT_HOST=$(hostname)
 	CURRENT_IP=`echo $CUR_IFCONFIG | sed "s/.*inet addr:\([0-9\.]*\).*/\1/"`
 
+	host1=github.com
+    if [ ping -w5 -c3 $host1 > /dev/null 2>&1 ]; then
+        INTERNETUP=1
+    else
+        INTERNETUP=0
+    fi
+
 	clear
 	echo "Welcome to Impreshin"
 	echo "-----------------------------------------------"
@@ -20,14 +27,24 @@ function runscript {
 	echo "-----------------------------------------------"
 	echo "Setup $1"
 	echo ""
-	ARRAY=( 'w) Wizard - This will erase everything to default settings' '------------------------' ' 1) Partitioning' ' 2) Networking' ' 3) Folders & Files' ' 4) Impreshin Setup' ' 5) Update Impreshin' '------------------------' 'r) Reboot' 's) Shut Down'  )
-	ELEMENTS=${#ARRAY[@]}
 
-	# echo each element in array
-	# for loop
-	for (( i=0;i<$ELEMENTS;i++)); do
-	    echo " ${ARRAY[${i}]}"
-	done
+
+	echo 'w) Wizard - This will erase everything to default settings'
+	echo '------------------------'
+	echo ' 1) Partitioning'
+	echo ' 2) Networking'
+	echo ' 3) Folders & Files'
+	echo ' 4) Impreshin Setup'
+
+	if [ "$INTERNETUP"="1" ]; then
+		echo ' 5) Update Impreshin'
+	fi
+
+	echo '------------------------'
+	echo 'r) Reboot'
+	echo 's) Shut Down'
+
+
 
 	echo ""
 	read -e -p "Choose Script: " -i "" RUNIT

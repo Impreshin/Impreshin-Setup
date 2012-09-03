@@ -2,6 +2,11 @@
 export LANG=""
 cd ~/setup/
 WIZARD=$1
+trap bashtrap INT
+bashtrap()
+{
+    bash ./setup.sh
+}
 function startfn {
 	echo ""
 	echo "Stopping MySQL"
