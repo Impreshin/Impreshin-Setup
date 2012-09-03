@@ -41,6 +41,7 @@ function runscript {
 	fi
 
 	echo '------------------------'
+	echo 'u) Update System'
 	echo 'r) Reboot'
 	echo 's) Shut Down'
 	echo ''
@@ -108,6 +109,20 @@ function runscript {
             echo "Exiting"
             sleep 1
             exit
+         ;;
+         u)
+            SELECTED="1"
+            clear
+            echo "Updating System"
+            echo "-----------------------------------------------"
+            echo ""
+            echo "this may take a while...."
+            sleep 1
+            sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt-get dist-upgrade
+
+            runscript
          ;;
     esac
 
