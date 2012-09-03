@@ -4,7 +4,7 @@ echo "Checking internet connection"
 echo "-----------------------------------------------"
 
 host1=github.com
-if [ ping -w5 -c3 $host1 > /dev/null 2>&1 ]; then
+if  [ "`ping -c 1 $host1`" ]; then
 	echo "Updating scripts - Please wait..."
 	git reset --hard HEAD
     git pull https://WilliamStam:awssmudge1@github.com/WilliamStam/Impreshin-Setup.git master

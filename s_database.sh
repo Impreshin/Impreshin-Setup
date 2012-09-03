@@ -8,7 +8,7 @@ bashtrap()
 }
 
 host1=github.com
-    if [ ping -w5 -c3 $host1 > /dev/null 2>&1 ]; then
+    if  [ "`ping -c 1 $host1`" ]; then
         INTERNETUP=1
     else
         INTERNETUP=0
