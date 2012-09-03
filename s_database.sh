@@ -7,56 +7,113 @@ bashtrap()
     bash ./setup.sh
 }
 
-host1=github.com
+	host1=github.com
     if  [ "`ping -c 1 $host1`" ]; then
         INTERNETUP="1"
     else
         INTERNETUP="0"
     fi
 
+    php_output=`php ~/setup/cfg.php`
+    	IFS=":"
+    	while read -r key val; do
+    	    eval ${key}="${val}"
+    	done <<< "$php_output"
+
+
 function startfn {
+	clear
+	echo "Setup Impreshin"
+	echo "-----------------------------------------------"
+	echo ' 1) Setup new company'
+	echo '------------------------'
+	if [ -z "$WIZARD" ]; then
+        echo 'c) Continue with the wizard'
+    fi
+    echo 'b) Back to main menu'
 
 
 
-	php_output=`php ~/setup/cfg.php`
-	IFS=":"
-	while read -r key val; do
-	    eval ${key}="${val}"
-	done <<< "$php_output"
+	read -e -p "Choose Option: " -i "" RUNIT
 
-	echo ""
-	echo "New Company: "
-	echo "------------"
-    read -e -p "Company: " -i "" CHANGE_COMPANY
-
-    echo ""
-    echo "Admin User"
-    echo "------------"
-    read -e -p "Full Name: " -i "" CHANGE_NAME
-    read -e -p "Email: " -i "" CHANGE_EMAIL
-    read -e -p "Password: " -i "" CHANGE_PASSWORD
-
-    echo ""
-    echo "Publication"
-    echo "------------"
-    read -e -p "NAME: " -i "" CHANGE_publication
-    read -e -p " Page Columns:       " -i "8" CHANGE_columnsav
-    read -e -p " Page Cm:            " -i "39" CHANGE_cmav
-    read -e -p " Page Width (in mm): " -i "263" CHANGE_pagewidth
-
-
-	 echo ""
-    echo "Date"
-    echo "------------"
-    read -e -p "NAME: " -i "$(date +%Y-%m-%d)" CHANGE_date
+	if [ -z "$RUNIT" ]; then
+		startfn
+	fi
 
 	echo ""
+	SELECTED=""
+	case $RUNIT in
+        1)
+	        SELECTED="1"
+           newCompany
+         ;;
+        b)
+	        SELECTED="1"
+	       bash ./setup.sh
+         ;;
+        c)
+	        SELECTED="1"
+	     if [ "$INTERNETUP"="0" ]; then
+             bash ./setup.sh
+          else
+         	if [ -n "$WIZARD" ]; then
+                     bash ./s_update.sh
+                 else
+                     bash ./setup.sh "Impreshin DB Done"
+                 fi
+         	fi
+
+         }
+         ;;
+
+    esac
+
+	if [ -z "$SELECTED" ]; then
+		runscript " - Sorry, $RUNIT is not a valid answer"
+
+	fi
+
+
+
 	echo ""
 
+}
+function newCompany {
+	clear
+	echo "Setup Impreshin - New Company"
+	echo "-----------------------------------------------"
 
-	read -p "Press [Enter] key to write these values to the db..."
-	cleardb
-	doNewCompany
+        read -e -p "Company: " -i "" CHANGE_COMPANY
+
+        echo ""
+        echo "Admin User"
+        echo "------------"
+        read -e -p "Full Name: " -i "" CHANGE_NAME
+        read -e -p "Email: " -i "" CHANGE_EMAIL
+        read -e -p "Password: " -i "" CHANGE_PASSWORD
+
+        echo ""
+        echo "Publication"
+        echo "------------"
+        read -e -p "NAME: " -i "" CHANGE_publication
+        read -e -p " Page Columns:       " -i "8" CHANGE_columnsav
+        read -e -p " Page Cm:            " -i "39" CHANGE_cmav
+        read -e -p " Page Width (in mm): " -i "263" CHANGE_pagewidth
+
+
+    	 echo ""
+        echo "Date"
+        echo "------------"
+        read -e -p "NAME: " -i "$(date +%Y-%m-%d)" CHANGE_date
+
+    	echo ""
+    	echo ""
+
+
+    	read -p "Press [Enter] key to save these values to the db..."
+    	cleardb
+    	doNewCompany
+
 }
 function doNewCompany {
 
@@ -96,8 +153,9 @@ UPDATE global_users_company SET ab_permissions = 'a:9:{s:7:"details";a:2:{s:7:"a
 
 EOFMYSQL
 
-
-    finish
+	echo "--- Done ---"
+	sleep 1
+	starfn
 
 
 }
@@ -135,37 +193,7 @@ TRUNCATE TABLE global_users_company;
 EOFMYSQL
 }
 
-function finish {
 
-	echo "--- Done ---"
-	endfn
-}
-function endfn {
-echo ""
-echo ""
- read -p "Press [Enter] key to continue..."
 
- if [ "$INTERNETUP"="0" ]; then
-    bash ./setup.sh
- else
-	if [ -n "$WIZARD" ]; then
-            bash ./s_update.sh
-        else
-            bash ./setup.sh "Impreshin DB Done"
-        fi
-	fi
 
-}
-
-clear
-
-echo "Impreshin New Company"
-echo "-----------------------------------------------"
-echo ""
-
-read -e -p "Do you want to set up a new company?: " -i "n" goonfn
-if [ $goonfn = "y" ]; then
-	startfn
-else
-	endfn
-fi
+startfn

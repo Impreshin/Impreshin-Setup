@@ -19,7 +19,7 @@ php_output=`php ~/setup/cfg.php`
 
 	cd /media/data/web
 
-	echo "path: $git_path"
+	# echo "path: $git_path"
 
 	if [ -n "$git_path" ]; then
 		git reset --hard HEAD
