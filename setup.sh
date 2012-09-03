@@ -47,7 +47,7 @@ function runscript {
 
 
 	echo ""
-	read -e -p "Choose Script: " -i "" RUNIT
+	read -e -p "Choose Option: " -i "" RUNIT
 
 	if [ -z "$RUNIT" ]; then
 		exit 0
