@@ -4,7 +4,7 @@ WIZARD=$1
 trap bashtrap INT
 bashtrap()
 {
-    bash ./setup.sh
+   bash ~/setup/setup.sh
 }
 cd ~/setup/
 

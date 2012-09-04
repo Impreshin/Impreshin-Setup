@@ -5,7 +5,7 @@ WIZARD=$1
 trap bashtrap INT
 bashtrap()
 {
-    bash ./setup.sh
+    bash ~/setup/setup.sh
 }
 function startfn {
 	echo ""
