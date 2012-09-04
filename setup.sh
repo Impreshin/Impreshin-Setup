@@ -108,6 +108,7 @@ function runscript {
             SELECTED="1"
             echo "Exiting"
             sleep 1
+            clear
             exit
          ;;
          u)
