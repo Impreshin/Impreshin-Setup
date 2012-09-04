@@ -1,6 +1,11 @@
 #!/bin/bash
 export LANG=""
 cd ~/setup/
+trap bashtrap INT
+bashtrap()
+{
+    exit
+}
 function runscript {
 
 	INTERFACE=`/sbin/ifconfig  | grep ^eth | sed "s/ .*//" | head -n 1`

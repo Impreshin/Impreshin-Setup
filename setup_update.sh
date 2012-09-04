@@ -1,5 +1,12 @@
 #!/bin/bash
 export LANG=""
+trap bashtrap INT
+bashtrap()
+{
+    bash ~/setup/setup.sh
+}
+
+
 echo "Checking internet connection"
 echo "-----------------------------------------------"
 
@@ -13,4 +20,4 @@ else
 	sleep 1
 fi
 
-bash ./setup.sh
+sudo bash ~/setup/setup.sh
