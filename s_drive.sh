@@ -84,7 +84,7 @@ function mountDrive {
 	sudo mount $1 /media/data
 
 
-	LINE='LABEL=DATA    /media/data   ext4    defaults  0   2'
+	LINE='LABEL=DATA	/media/data	ext4	defaults	0	2'
 	grep -q "^LABEL=DATA" /etc/fstab || sudo sh -c 'echo "$LINE" >>/etc/fstab'
 
 	finish
