@@ -22,7 +22,7 @@ php_output=`php ~/setup/cfg.php`
 	# echo "path: $git_path"
 
 	if [ -n "$git_path" ]; then
-		git reset --hard HEAD
+		git stash
 	    git pull https://$git_username:$git_password@$git_path $git_branch
 
 	    wget --quiet --output-document=/dev/null http://localhost/update/index.php

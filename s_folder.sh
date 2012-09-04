@@ -27,7 +27,7 @@ function startfn {
 
 
 
-	# tar pczf ./data_drive.tar.gz /media/data --exclude=/media/data/lost+found
+	# tar pczf ~/data_drive.tar.gz /media/data --exclude=/media/data/lost+found
 	sudo tar -pxzf ~/data_drive.tar.gz -C /
 	echo "--- done ---"
 	echo ""
