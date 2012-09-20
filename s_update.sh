@@ -31,6 +31,9 @@ php_output=`php ~/setup/cfg.php`
 	    echo "CANT READ CONFIG FILE. EXITING NOW"
 		echo ""
 	fi
+
+
+
 	cd ~/setup/
 	
 	finish

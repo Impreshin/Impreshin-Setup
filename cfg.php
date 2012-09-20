@@ -8,7 +8,10 @@ if (php_sapi_name() == 'cli'){
 		echo "db_$key:$val\n";
 	}
 	foreach ($cfg['git'] as $key=> $val) {
-		echo "git_$key:$val\n";
+		if (!is_array($val)){
+			echo "git_$key:$val\n";
+		}
+
 	}
 
 }
