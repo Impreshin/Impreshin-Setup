@@ -240,6 +240,9 @@ function proxyfn {
 		echo "must be in format http://DOMAIN\USERNAME:PASSWORD@SERVER:PORT/ leave blank to disable the proxy"
 		read -e -p "Proxy: " -i "$CURRENT_PROXY" CHANGE_PROXY
 
+		# TODO git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
+		# TODO set apt proxy aswell
+
 		if [ "$CHANGE_PROXY" != "$CURRENT_PROXY" ]; then
 			export $CHANGE_PROXY
 		fi
