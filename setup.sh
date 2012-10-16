@@ -1,6 +1,11 @@
 #!/bin/bash
 export LANG=""
 cd ~/setup/
+trap bashtrap INT
+bashtrap()
+{
+    exit
+}
 function runscript {
 
 	INTERFACE=`/sbin/ifconfig  | grep ^eth | sed "s/ .*//" | head -n 1`
@@ -9,10 +14,10 @@ function runscript {
 	CURRENT_IP=`echo $CUR_IFCONFIG | sed "s/.*inet addr:\([0-9\.]*\).*/\1/"`
 
 	host1=github.com
-    if [ ping -w5 -c3 $host1 > /dev/null 2>&1 ]; then
-        INTERNETUP=1
+   if  [ "`ping -c 1 $host1`" ]; then
+        INTERNETUP="1"
     else
-        INTERNETUP=0
+        INTERNETUP="0"
     fi
 
 	clear
@@ -41,13 +46,16 @@ function runscript {
 	fi
 
 	echo '------------------------'
+	echo 'u) Update System'
 	echo 'r) Reboot'
 	echo 's) Shut Down'
+	echo ''
+	echo 'e) Exit'
 
 
 
 	echo ""
-	read -e -p "Choose Script: " -i "" RUNIT
+	read -e -p "Choose Option: " -i "" RUNIT
 
 	if [ -z "$RUNIT" ]; then
 		exit 0
@@ -100,6 +108,27 @@ function runscript {
          s)
             SELECTED="1"
             sudo shutdown -h now
+         ;;
+         e)
+            SELECTED="1"
+            echo "Exiting"
+            sleep 1
+            clear
+            exit
+         ;;
+         u)
+            SELECTED="1"
+            clear
+            echo "Updating System"
+            echo "-----------------------------------------------"
+            echo ""
+            echo "this may take a while...."
+            sleep 1
+            sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt-get dist-upgrade
+
+            runscript
          ;;
     esac
 

@@ -5,7 +5,7 @@ WIZARD=$1
 trap bashtrap INT
 bashtrap()
 {
-    bash ./setup.sh
+    bash ~/setup/setup.sh
 }
 function startfn {
 	echo ""
@@ -27,8 +27,8 @@ function startfn {
 
 
 
-	# tar pczf ./data_drive.tar.gz /media/data --exclude=/media/data/lost+found
-	sudo tar -pxzf ./data_drive.tar.gz -C /
+	# tar pczf ~/data_drive.tar.gz /media/data --exclude=/media/data/lost+found
+	sudo tar -pxzf ~/data_drive.tar.gz -C /
 	echo "--- done ---"
 	echo ""
 	echo "Applying Folder Permissions"

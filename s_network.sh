@@ -4,7 +4,7 @@ WIZARD=$1
 trap bashtrap INT
 bashtrap()
 {
-    bash ./setup.sh
+   bash ~/setup/setup.sh
 }
 cd ~/setup/
 
@@ -244,7 +244,7 @@ function proxyfn {
 		# TODO set apt proxy aswell
 
 		if [ "$CHANGE_PROXY" != "$CURRENT_PROXY" ]; then
-			export $CHANGE_PROXY
+			export http_proxy=$CHANGE_PROXY
 		fi
 	fi
 	finish

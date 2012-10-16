@@ -4,7 +4,7 @@ WIZARD=$1
 trap bashtrap INT
 bashtrap()
 {
-    bash ./setup.sh
+    bash ~/setup/setup.sh
 }
 cd ~/setup/
 function startfn {
@@ -19,7 +19,7 @@ php_output=`php ~/setup/cfg.php`
 
 	cd /media/data/web
 
-	echo "path: $git_path"
+	# echo "path: $git_path"
 
 	if [ -n "$git_path" ]; then
 		git reset --hard HEAD
@@ -31,6 +31,9 @@ php_output=`php ~/setup/cfg.php`
 	    echo "CANT READ CONFIG FILE. EXITING NOW"
 		echo ""
 	fi
+
+
+
 	cd ~/setup/
 	
 	finish
