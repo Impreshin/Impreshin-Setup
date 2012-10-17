@@ -80,7 +80,7 @@ function formatDrive {
 function mountDrive {
 	echo ""
 	echo "Mounting the drive to /media/data"
-	# sudo mkdir /media/data
+	sudo mkdir /media/data
 	sudo mount $1 /media/data
 
 
