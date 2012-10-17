@@ -1,1 +1,4 @@
-This file was created by JetBrains PhpStorm (PhpStorm) PS-121.110 for binding GitHub repository
+Setup script for Impreshin on the dedicated servers
+---------------------------------------------------
+
+./setup.sh
