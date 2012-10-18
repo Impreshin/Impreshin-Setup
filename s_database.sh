@@ -26,6 +26,8 @@ function startfn {
 	echo "Setup Impreshin"
 	echo "-----------------------------------------------"
 	echo ' 1) Setup new company'
+	echo ''
+	echo ' d) Clear the entire database'
 	echo '------------------------'
 	if [ -z "$WIZARD" ]; then
         echo 'c) Continue with the wizard'
@@ -62,8 +64,16 @@ function startfn {
                      bash ./setup.sh "Impreshin DB Done"
                  fi
          	fi
+         ;;
+         d)
+	        SELECTED="1"
+	        read -e -p "Are you sure you want to delete all the data in the database?: " -i "n" goon
+			if [ $goon = "y" ]; then
+				cleardb
+			else
+				bash ./s_database.sh
+			fi
 
-         }
          ;;
 
     esac
@@ -101,6 +111,7 @@ function newCompany {
         read -e -p " Page Width (in mm): " -i "263" CHANGE_pagewidth
 
 
+
     	 echo ""
         echo "Date"
         echo "------------"
@@ -134,7 +145,7 @@ SET @publication_pagewidth:="$CHANGE_pagewidth";
 
 SET @publishDate:="$CHANGE_date";
 
-INSERT INTO global_companies (company) VALUES (@companyName);
+INSERT INTO global_companies (company, ab_upload_material) VALUES (@companyName, '1');
 SET @cID = LAST_INSERT_ID();
 
 INSERT INTO	global_users (fullName,email,password) VALUES (@user_name, @user_email, md5(concat('aws_',@user_password,'_',md5('zoutnet'))));
