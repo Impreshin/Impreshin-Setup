@@ -167,7 +167,7 @@ EOFMYSQL
 
 	echo "--- Done ---"
 	sleep 1
-	starfn
+	startfn
 
 
 }

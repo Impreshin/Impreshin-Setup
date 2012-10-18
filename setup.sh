@@ -4,7 +4,7 @@ cd ~/setup/
 trap bashtrap INT
 bashtrap()
 {
-    exit 0
+    exit 1
 }
 function runscript {
 
@@ -114,6 +114,8 @@ function runscript {
             echo "Exiting"
             sleep 1
             clear
+            exit 1
+            exit 0
             exit
          ;;
          u)
