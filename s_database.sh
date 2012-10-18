@@ -130,7 +130,7 @@ function newCompany {
 function doNewCompany {
 
 
-mysql -h $host -u $username -p$password $database<<EOFMYSQL
+mysql -h $db_host -u $db_username -p$db_password $db_database<<EOFMYSQL
 
 SET @companyName:="$CHANGE_COMPANY";
 
@@ -172,7 +172,7 @@ EOFMYSQL
 
 }
 function cleardb {
-mysql -h $host -u $username -p$password $database<<EOFMYSQL
+mysql -h $db_host -u $db_username -p$db_password $db_database<<EOFMYSQL
 
 TRUNCATE TABLE ab_accounts;
 TRUNCATE TABLE ab_accounts_pub;
