@@ -33,6 +33,7 @@ function startfn {
         echo 'c) Continue with the wizard'
     fi
     echo 'b) Back to main menu'
+    echo 'mysql: $host -u $username -p$password $database '
 
 
 
@@ -202,6 +203,8 @@ TRUNCATE TABLE global_users;
 TRUNCATE TABLE global_users_company;
 
 EOFMYSQL
+
+bash ./s_database.sh
 }
 
 
