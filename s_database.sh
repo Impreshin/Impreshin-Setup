@@ -33,7 +33,7 @@ function startfn {
         echo 'c) Continue with the wizard'
     fi
     echo 'b) Back to main menu'
-    echo 'mysql: $db_host -u $db_username -p$db_password $db_database '
+    echo "mysql: $db_host -u $db_username -p$db_password $db_database "
 
 
 
