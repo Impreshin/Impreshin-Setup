@@ -33,7 +33,7 @@ function startfn {
         echo 'c) Continue with the wizard'
     fi
     echo 'b) Back to main menu'
-    echo 'mysql: $host -u $username -p$password $database '
+    echo 'mysql: $db_host -u $db_username -p$db_password $db_database '
 
 
 
@@ -123,7 +123,7 @@ function newCompany {
 
 
     	read -p "Press [Enter] key to save these values to the db..."
-    	cleardb
+    	# cleardb
     	doNewCompany
 
 }
