@@ -245,6 +245,14 @@ function proxyfn {
 
 		if [ "$CHANGE_PROXY" != "$CURRENT_PROXY" ]; then
 			export http_proxy=$CHANGE_PROXY
+			export https_proxy=$CHANGE_PROXY
+			git config --global http.proxy $CHANGE_PROXY
+
+cat <<EOF > /etc/apt/apt.conf
+Acquire::http::proxy "$CHANGE_PROXY";
+Acquire::https::proxy "$CHANGE_PROXY";
+EOF
+
 		fi
 	fi
 	finish
