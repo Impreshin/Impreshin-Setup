@@ -146,7 +146,7 @@ SET @publication_pagewidth:="$CHANGE_pagewidth";
 
 SET @publishDate:="$CHANGE_date";
 
-INSERT INTO global_companies (company, ab_upload_material) VALUES (@companyName, '1');
+INSERT INTO global_companies (company, ab_upload_material, ab, nf) VALUES (@companyName, '1', '1', '1');
 SET @cID = LAST_INSERT_ID();
 
 INSERT INTO	global_users (fullName,email,password) VALUES (@user_name, @user_email, md5(concat('aws_',@user_password,'_',md5('zoutnet'))));

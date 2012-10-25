@@ -240,13 +240,18 @@ function proxyfn {
 		echo "must be in format http://DOMAIN\USERNAME:PASSWORD@SERVER:PORT/ leave blank to disable the proxy"
 		read -e -p "Proxy: " -i "$CURRENT_PROXY" CHANGE_PROXY
 
-		# TODO git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
-		# TODO set apt proxy aswell
+
 
 		if [ "$CHANGE_PROXY" != "$CURRENT_PROXY" ]; then
 			export http_proxy=$CHANGE_PROXY
 			export https_proxy=$CHANGE_PROXY
+			export HTTP_PROXY=$CHANGE_PROXY
+			export HTTPS_PROXY=$CHANGE_PROXY
 			git config --global http.proxy $CHANGE_PROXY
+
+			# TODO gsettings set org.gnome.system.proxy mode 'manual'
+			# TODO gsettings set org.gnome.system.proxy.http host 'myproxy.server.com'
+			# TODO gsettings set org.gnome.system.proxy.http port 8080
 
 cat <<EOF > /etc/apt/apt.conf
 Acquire::http::proxy "$CHANGE_PROXY";
