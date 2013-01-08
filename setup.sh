@@ -30,7 +30,7 @@ function runscript {
 	echo "   http://$CURRENT_IP/"
 	echo ""
 	if [ -d /media/data/wip ]; then
-	echo " WIP branch detected at http://$CURRENT_HOST:81/"
+	echo " WIP branch detected at http://$CURRENT_HOST:81/ (WARNING: this could be very unstable)"
 	echo ""
 	fi
 	echo "-----------------------------------------------"
