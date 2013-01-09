@@ -51,7 +51,7 @@ php_output=`php ~/setup/cfg_wip.php`
 		git reset --hard HEAD
 	    git pull https://$git_username:$git_password@$git_path $git_branch
 
-	    wget --quiet --output-document=/dev/null http://localhost/update/index.php
+	    wget --quiet --output-document=/dev/null http://localhost:81/update/index.php
 	  else
 		echo ""
 	    echo "CANT READ CONFIG FILE. EXITING NOW"
