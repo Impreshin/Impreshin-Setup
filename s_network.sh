@@ -259,7 +259,7 @@ Acquire::https::proxy "$CHANGE_PROXY";
 EOF
 
 PROXY_CONTENTS=""
-if [ -z "$CHANGE_PROXY" ]; then
+if [ -n "$CHANGE_PROXY" ]; then
 PROXY_CONTENTS="$CHANGE_PROXY"
 fi
 cat <<EOF > /media/data/use_proxy
