@@ -262,6 +262,8 @@ PROXY_CONTENTS=""
 if [ -n "$CHANGE_PROXY" ]; then
 PROXY_CONTENTS="$CHANGE_PROXY"
 fi
+
+# writes just the proxy stuff to a file.. that my update script in php can read it and use it for git pulls. some stupid reason php shell_exec and git pull dont listen to the git config file (no $HOME folder for shell_exec)
 cat <<EOF > /media/data/use_proxy
 $PROXY_CONTENTS
 EOF
