@@ -20,6 +20,8 @@ php_output=`php ~/setup/cfg.php`
 	cd /media/data/web
 
 	# echo "path: $git_path"
+	echo "$git_branch"
+	echo ""
 
 	if [ -n "$git_path" ]; then
 		git reset --hard HEAD
@@ -32,8 +34,8 @@ php_output=`php ~/setup/cfg.php`
 		echo ""
 	fi
 
+echo ""
 if [ -d /media/data/wip ]; then
-
 php_output=`php ~/setup/cfg_wip.php`
 	IFS=":"
 	while read -r key val; do
@@ -46,6 +48,13 @@ php_output=`php ~/setup/cfg_wip.php`
 	cd /media/data/wip
 
 	# echo "path: $git_path"
+echo ""
+echo ""
+echo ""
+echo ""
+echo "$git_branch"
+	echo ""
+
 
 	if [ -n "$git_path" ]; then
 		git reset --hard HEAD
