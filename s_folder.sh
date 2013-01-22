@@ -43,6 +43,11 @@ function startfn {
 	echo "Uploads - done"
 	echo ""
 	sudo chown -R www-data:www-data /media/data/web
+
+	if [ -d /media/data/wip ]; then
+		sudo chown -R www-data:www-data /media/data/wip
+	fi
+
 	echo "Impreshin - done"
 	echo ""
 	echo "----------"
