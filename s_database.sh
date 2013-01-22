@@ -60,11 +60,11 @@ function startfn {
              bash ./setup.sh
           else
          	if [ -n "$WIZARD" ]; then
-                     bash ./s_update.sh
-                 else
-                     bash ./setup.sh "Impreshin DB Done"
-                 fi
-         	fi
+				 bash ./s_update.sh
+			 else
+				 bash ./setup.sh "Impreshin DB Done"
+			 fi
+		fi
          ;;
          d)
 	        SELECTED="1"
