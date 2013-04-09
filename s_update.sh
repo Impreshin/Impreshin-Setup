@@ -15,15 +15,23 @@ php_output=`php ~/setup/cfg.php`
 	done <<< "$php_output"
 
 
-
+	sudo chown -R www-data:www-data /media/data/web
+	if [ -d /media/data/wip ]; then
+		sudo chown -R www-data:www-data /media/data/wip
+	fi
 
 	cd /media/data/web
+
+
+
+
 
 	# echo "path: $git_path"
 	echo "$git_branch"
 	echo ""
 
 	if [ -n "$git_path" ]; then
+
 		git reset --hard HEAD
 	    git pull https://$git_username:$git_password@$git_path $git_branch
 
@@ -75,6 +83,12 @@ fi
 }
 
 function finish {
+
+	sudo chown -R www-data:www-data /media/data/web
+
+	if [ -d /media/data/wip ]; then
+		sudo chown -R www-data:www-data /media/data/wip
+	fi
 
 	echo "--- Done ---"
 	endfn
